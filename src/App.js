@@ -1,24 +1,13 @@
 import React,{Component} from 'react';
-import './App.css';
-import {storyIds} from './services/hkn_api';
+import './styles/App.css';
+import Stories from './Containers/Stories';
 
 class App extends Component {
-  state={
-    storyIds:[]
-  }
-
-  componentDidMount(){
-    storyIds().then(data=>{
-      console.log(data);
-      this.setState({storyIds:data});
-    });
-    
-  }
 
   render(){
     return (
       <div className="App">
-        <p>{this.state.storyIds}</p>
+        <Stories/>
       </div>
     );
   }
