@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {story} from '../services/hkn_api';
 import '../styles/story.css';
+import { time } from '../utils/time';
 
 class Story extends Component{
     state={
@@ -16,8 +17,9 @@ class Story extends Component{
     render(){
         return(
         <div className="storyStyle">
-            <p><strong>{this.state.story.title}</strong></p>
-            <p>{this.state.story.by}</p>
+            <a href={this.state.story.url}><strong>{this.state.story.title}</strong></a>
+            <p>By: {this.state.story.by}</p>
+            <p>Posted: {time(this.state.story.time)} ago</p>
         </div>
         )
     }
