@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import Story from './Story'
-import {storyIds} from '../services/hkn_api';
+import Story from './Story';
+import {NewStoryIds} from '../services/hkn_api';
+import '../styles/story.css'
 
-class Stories extends Component {
+class NewStories extends Component {
   state={
     storyIds:[],
     low:0,
@@ -12,15 +13,15 @@ class Stories extends Component {
   }
 
   componentDidMount(){
-    storyIds().then(data=>{
+    NewStoryIds().then(data=>{
       //console.log(data.data);
       this.setState({storyIds:data.data});
-      this.up();
+      this.moreHandler();
     });
     
   }
 
-  up=()=>{
+  moreHandler=()=>{
     const tempS=this.state.storyIds.splice(this.state.low,this.state.up);
     const l=this.state.low+30;
     const u=this.state.up+30;
@@ -30,13 +31,13 @@ class Stories extends Component {
   render(){
     return (
     <div>
-    <h1>Hacker News Articles</h1>
+    <h2 style={{color:'white'}}>New Stories</h2>
     {this.state.tempIds.map(storyId=>{
     return <Story key={storyId} storyId={storyId}/>
   })}
-    <button onClick={this.up}>More!</button>
+    <button className="bt" onClick={this.moreHandler}>More!</button>
     </div>
     );
   }
 }
-export default Stories;
+export default NewStories;

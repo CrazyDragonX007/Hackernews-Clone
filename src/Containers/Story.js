@@ -13,11 +13,12 @@ class Story extends Component{
             this.setState({story:d});
             console.log(this.state.story);
         })
+        window.scrollTo(0,0)
     }
     render(){
         return(
         <div className="storyStyle">
-            <a href={this.state.story.url}><strong>{this.state.story.title}</strong></a>
+            <a href={this.state.story.url?this.state.story.url:null}><strong>{this.state.story.title}</strong></a>
             <p>By: {this.state.story.by}</p>
             <p>Posted: {time(this.state.story.time)} ago</p>
         </div>
