@@ -4,17 +4,17 @@ const storyUrl=baseUrl+'/item/';
 const newStoriesUrl=baseUrl+'/newstories.json';
 const topStoriesUrl=baseUrl+'/topstories.json';
 
-export const story=async(storyId)=>{
-    const result=await axios.get(storyUrl+storyId+'.json').then(data=>data);
+export const story=async(storyId,cancelToken)=>{
+    const result=await axios.get(storyUrl+storyId+'.json',{cancelToken:cancelToken}).then(data=>data);
     return result;
 }
-export const TopStoryIds = async()=>{
+export const TopStoryIds = async(cancelToken)=>{
     //console.log(url);
-    const result=await axios.get(topStoriesUrl).then(data=>data);
+    const result=await axios.get(topStoriesUrl,{cancelToken:cancelToken}).then(data=>data).catch(er=>er);
     return result;
 }
-export const NewStoryIds = async()=>{
+export const NewStoryIds = async(cancelToken)=>{
     //console.log(url);
-    const result=await axios.get(newStoriesUrl).then(data=>data);
+    const result=await axios.get(newStoriesUrl,{cancelToken:cancelToken}).then(data=>data).catch(er=>er);
     return result;
 }
