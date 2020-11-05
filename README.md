@@ -1,3 +1,6 @@
+### HackerNews-Clone
+A Hackernews clone with a dark UI created with React.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
